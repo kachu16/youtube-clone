@@ -1,16 +1,18 @@
+// import { useEffect  , useState} from 'react';
 import VideoCard from './VideoCard';
 import { useSelector } from 'react-redux';
+// import { API_KEY } from '../utils/config';
+import { Link } from 'react-router-dom';
+import Shimmer from './Shimmer';
 
 const VideoContainer = () => {
-  // const [videos , setVideos] = useState([]);
+
   const video = useSelector(store => store.fetchVideo.videos);
 
-
-  return video.length === 0 ? <h1>No videos</h1> : (
-    <div className='w-[100vw] bg-black text-white flex flex-wrap'>
+  return !video ? <Shimmer/> : (
+    <div className='w-[100vw] text-white flex flex-wrap justify-center bg-black pt-3'>
       {
-        video.map((video) => <VideoCard video={video} key={video.id}/> )
-        // video.map((el, index) => <h1 key={index}>{el}</h1>)
+        video.map((video) => <Link  key={video.id} to={`/video/${video.id}`}><VideoCard video={video}/></Link> )
       }
     </div>
   )

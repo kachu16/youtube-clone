@@ -1,4 +1,29 @@
-// git add dummy.js
+import {useState} from 'react'
 
-// main <<< master
+const Dummy = () => {
+    const [selectedOption, setSelectedOption] = useState('Option 1');
 
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+  return (
+    <div>
+      <select id="dropdown" value={selectedOption} onChange={handleOptionChange} className="bg-gray-300 text-sm  w-40 p-2 ">
+          <option value="Option 1">A-Z</option>
+          <option value="Option 2">Z-A</option>
+          <option value="Option 3">Newest</option>
+          <option value="Option 4">Oldest</option>
+        </select>
+
+
+    </div>
+  )
+}
+
+export default Dummy
+
+
+// GET [YOUR_API_KEY] HTTP/1.1
+
+// Authorization: Bearer [YOUR_ACCESS_TOKEN]
+// Accept: application/json
