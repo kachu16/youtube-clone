@@ -4,7 +4,6 @@ import user from '../assets/usericon.png';
 import { useDispatch } from 'react-redux';
 import { toggleSidebar } from '../utils/hamburgerToggleSlice';
 import { useEffect, useState } from 'react';
-import { getSearchVideo } from '../utils/fetchSearchVideoSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {

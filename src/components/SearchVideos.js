@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { API_KEY } from "../utils/config";
+import SearchVideoCard from "./SearchVideoCard";
 
 const SearchVideos = () => {
   const [videos , setVideos] = useState();
@@ -19,20 +20,12 @@ const SearchVideos = () => {
   }
   return (
 
-    <div className="text-white">
+    <div className="text-white mx-3 my-5">
       {
         videos && (
          <div>
           {
-            videos.map((video) => (
-              <div>
-                <img src={video?.snippet?.thumbnails?.high?.url} alt="not found"/>
-                <div>
-                  <h1>{video?.snippet?.channelTitle}</h1>
-                  <h2>{video?.snippet?.description}</h2>
-                  </div>
-              </div>
-            ))
+            videos.map((video) => <SearchVideoCard video={video}/>)
           }
           </div>
         )
