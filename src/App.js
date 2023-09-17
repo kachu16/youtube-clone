@@ -2,16 +2,31 @@ import Header from "./components/Header";
 import BodyContainer from "./components/BodyContainer";
 import { Provider } from "react-redux";
 import store from "./utils/store";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import SingleVideoPage from "./components/SingleVideoPage";
 import VideoContainer from "./components/VideoContainer";
 import SearchVideos from "./components/SearchVideos";
 
-const appRouter = createBrowserRouter([
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Header/>
+      <BodyContainer/>
+    </Provider>
+  )
+}
+
+export default App
+export const appRouter = createBrowserRouter([
   {
     path : '/',
-    element : <BodyContainer/>,
+    element : <App/>,
     children: [
+           {
+        path : '/search/:searchTerm',
+        element : <SearchVideos/>
+      },
       {
         path : '/',
         element : <VideoContainer/>
@@ -20,21 +35,7 @@ const appRouter = createBrowserRouter([
         path : '/video/:id',
         element : <SingleVideoPage/>
       },
-      {
-        path : '/search/video',
-        element : <SearchVideos/>
-      }
     ]
   },
  
 ])
-const App = () => {
-  return (
-    <Provider store={store}>
-      <Header/>
-      <RouterProvider router={appRouter}></RouterProvider>
-    </Provider>
-  )
-}
-
-export default App

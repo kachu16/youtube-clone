@@ -11,7 +11,7 @@ const fetchVideoSlice = createSlice({
     name : "fetchVideo",
     initialState : {
         videos : INITIAL_VIDEOS,
-        // isloading : false
+        isloading : false
     },
     reducers : {
       setInitialVideo : (state) => {
@@ -19,11 +19,11 @@ const fetchVideoSlice = createSlice({
       },
     },
     extraReducers : (builder) => {
-      // builder.addCase(fetchVideos.pending, (state) => {
-      //   state.isloading = true;
-      // })
+      builder.addCase(fetchVideos.pending, (state) => {
+        state.isloading = true;
+      })
       builder.addCase(fetchVideos.fulfilled, (state , action) => {
-        // state.isloading = false;
+        state.isloading = false;
         state.videos = action.payload;
       })
 
@@ -33,5 +33,5 @@ const fetchVideoSlice = createSlice({
     }
 })
 
-export const {fetchData, setInitialVideo } = fetchVideoSlice.actions;
+export const { setInitialVideo } = fetchVideoSlice.actions;
 export default fetchVideoSlice.reducer;

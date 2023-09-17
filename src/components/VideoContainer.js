@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Shimmer from './Shimmer';
 
 const VideoContainer = () => {
-
+  
   const video = useSelector(store => store.fetchVideo.videos);
 
   return !video ? <Shimmer/> : (

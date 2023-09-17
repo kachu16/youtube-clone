@@ -4,14 +4,16 @@ import user from '../assets/usericon.png';
 import { useDispatch } from 'react-redux';
 import { toggleSidebar } from '../utils/hamburgerToggleSlice';
 import { useEffect, useState } from 'react';
-import { API_KEY } from '../utils/config';
+import { getSearchVideo } from '../utils/fetchSearchVideoSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+
   const [searchText , seTSearchText] = useState('');
   const [suggestions , setSuggestions] = useState();
   const [showDiv , setShowDiv] = useState(false);
-  
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function handletoggleSidebar () {
     dispatch(toggleSidebar());
@@ -31,14 +33,11 @@ const Header = () => {
     setSuggestions(json[1]);
   }
 
-  useEffect(()=>{
-    getSearchVideo();
-  }, [searchText])
-
-  async function getSearchVideo () {
-    const video  = await fetch('GET https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + searchText + '&type=video&key=' + API_KEY);
-    const jsonData = await video.json();
-    console.log(jsonData.items);
+  function handleSearchVideos(text) {
+    if(text) {
+      navigate('/search/' + text);
+    }
+    seTSearchText('');
   }
 
 
@@ -57,9 +56,12 @@ const Header = () => {
           onChange={(e) => seTSearchText(e.target.value)}
           onFocus={()=> setShowDiv(true)} 
           onBlur={() => setShowDiv(false)}/>
-        <span className='w-10 h-9 text-xl cursor-pointer rounded-r-full p-1' style={{backgroundColor: 'rgb(80 77 77)'}}
-        onClick={()=> getSearchVideo()}
+          
+        
+          <span className='w-10 h-9 text-xl cursor-pointer rounded-r-full p-1' style={{backgroundColor: 'rgb(80 77 77)'}}
+        onClick={()=> handleSearchVideos(searchText)}
         >🔍</span>
+      
     </div>
 
     <div>
