@@ -1,8 +1,5 @@
-// import { useEffect  , useState} from 'react';
 import VideoCard from './VideoCard';
 import { useSelector } from 'react-redux';
-// import { API_KEY } from '../utils/config';
-import { Link } from 'react-router-dom';
 import Shimmer from './Shimmer';
 
 const VideoContainer = () => {
@@ -12,7 +9,7 @@ const VideoContainer = () => {
   return !video ? <Shimmer/> : (
     <div className='w-[100vw] text-white flex flex-wrap justify-center bg-black pt-3'>
       {
-        video.map((video) => <Link  key={video.id} to={`/video/${video.id}`}><VideoCard video={video}/></Link> )
+        video.map((video) => <VideoCard video={video} key={video.id}/> )
       }
     </div>
   )

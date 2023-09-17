@@ -21,9 +21,3 @@ const Dummy = () => {
 }
 
 export default Dummy
-
-
-// GET [YOUR_API_KEY] HTTP/1.1
-
-// Authorization: Bearer [YOUR_ACCESS_TOKEN]
-// Accept: application/json

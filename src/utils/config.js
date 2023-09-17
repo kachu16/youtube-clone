@@ -4,7 +4,6 @@ import {BiSolidMusic} from 'react-icons/bi';
 import {MdPets , MdSportsGymnastics , MdOutlineStyle, MdScience} from 'react-icons/md';
 import {FaGamepad, FaLaughBeam} from 'react-icons/fa';
 import {GiImpLaugh} from 'react-icons/gi';
-import {} from 'react-icons/ai'
 
 
 export const API_KEY = 'AIzaSyB6exck7Y3SFM_azFICO--tf4EInqrcNvg';

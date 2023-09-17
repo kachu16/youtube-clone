@@ -5,6 +5,7 @@ import store from "./utils/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SingleVideoPage from "./components/SingleVideoPage";
 import VideoContainer from "./components/VideoContainer";
+import SearchVideos from "./components/SearchVideos";
 
 const appRouter = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const appRouter = createBrowserRouter([
       {
         path : '/video/:id',
         element : <SingleVideoPage/>
+      },
+      {
+        path : '/search/video',
+        element : <SearchVideos/>
       }
     ]
   },
